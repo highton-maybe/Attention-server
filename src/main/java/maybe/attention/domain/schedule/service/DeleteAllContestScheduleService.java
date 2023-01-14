@@ -15,5 +15,4 @@ public class DeleteAllContestScheduleService {
     public void execute() {
         contestScheduleRepository.deleteAll();
     }
-
 }

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.schedule.ContestSchedule;
 import maybe.attention.domain.schedule.exception.NotFoundContestScheduleException;
 import maybe.attention.domain.schedule.presentation.dto.response.LookUpAllContestScheduleResponse;
-import maybe.attention.domain.schedule.presentation.dto.response.LookUpContestScheduleResponse;
 import maybe.attention.domain.schedule.repo.ContestScheduleRepository;
 import org.springframework.stereotype.Service;
 

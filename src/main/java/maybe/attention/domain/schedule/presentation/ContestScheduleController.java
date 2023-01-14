@@ -56,7 +56,7 @@ public class ContestScheduleController {
     }
 
     // 테스트용 데이터 싹 날리기
-    @DeleteMapping("/test-all")
+    @DeleteMapping
     public ResponseEntity<Void> deleteAll() {
         deleteAllContestScheduleService.execute();
         return ResponseEntity.ok().build();
