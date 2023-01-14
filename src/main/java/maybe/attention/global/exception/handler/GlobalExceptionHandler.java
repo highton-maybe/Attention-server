@@ -78,7 +78,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
     }
 
-    \@ExceptionHandler(NotFoundAuditionMemberException.class)
+    @ExceptionHandler(NotFoundAuditionMemberException.class)
     public ResponseEntity<ErrorMessage> handleNotFoundAuditionMemberException(HttpServletRequest request , NotFoundAuditionMemberException e) {
         printError(request, e, e.getErrorCode().getMessage());
         ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
