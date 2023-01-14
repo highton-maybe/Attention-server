@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 public class LookUpContestScheduleResponse {
+
+    private final Long scheduleId;
     private final String scheduleTitle;
     private final String scheduleContent;
     private final String scheduleDate;

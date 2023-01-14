@@ -20,6 +20,7 @@ public class LookUpContestScheduleService {
                 .orElseThrow(() -> new NotFoundContestScheduleException("일정을 찾을 수 없음"));
 
         LookUpContestScheduleResponse response = LookUpContestScheduleResponse.builder()
+                .scheduleId(contestSchedule.getContestScheduleId())
                 .scheduleTitle(contestSchedule.getScheduleTitle())
                 .scheduleContent(contestSchedule.getScheduleContent())
                 .scheduleDate(contestSchedule.getScheduleDate())

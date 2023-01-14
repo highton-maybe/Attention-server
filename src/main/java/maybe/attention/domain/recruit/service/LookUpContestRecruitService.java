@@ -26,6 +26,7 @@ public class LookUpContestRecruitService {
             throw new NotCoincideOrganizerException("주최자와 유저와 정보가 일치하지 않습니다.");
 
         LookUpContestRecruitResponse response = LookUpContestRecruitResponse.builder()
+                .recruitId(contestRecruit.getContestRecruitId())
                 .recruitTitle(contestRecruit.getRecruitTitle())
                 .recruitContent(contestRecruit.getRecruitContent())
                 .recruitStartDate(contestRecruit.getRecruitStartDate())
