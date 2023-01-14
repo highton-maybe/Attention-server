@@ -47,4 +47,8 @@ public class ContestRecruit {
         this.recruitStartDate = recruitStartDate != null ? recruitStartDate : this.recruitStartDate;
         this.recruitEndDate = recruitEndDate != null ? recruitEndDate : this.recruitEndDate;
     }
+
+    public void addAuditionMember(AuditionMember auditionMember) {
+        auditionMembers.add(auditionMember);
+    }
 }

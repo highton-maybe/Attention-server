@@ -3,6 +3,7 @@ package maybe.attention.domain.recruit.service;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.member.Member;
 import maybe.attention.domain.member.facade.MemberFacade;
+import maybe.attention.domain.member.repo.MemberRepository;
 import maybe.attention.domain.recruit.ContestRecruit;
 import maybe.attention.domain.recruit.presentation.dto.request.RegisterContestRecruitRequest;
 import maybe.attention.domain.recruit.repo.ContestRecruitRepository;
@@ -16,6 +17,7 @@ public class RegisterContestRecruitService {
 
     private final ContestRecruitRepository contestRecruitRepository;
     private final MemberFacade memberFacade;
+    private final MemberRepository memberRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void execute(RegisterContestRecruitRequest request) {
@@ -31,6 +33,9 @@ public class RegisterContestRecruitService {
                 .auditionMembers(null)
                 .build();
 
+        currentMember.addRecruit(contestRecruit);
+
+        memberRepository.save(currentMember);
         contestRecruitRepository.save(contestRecruit);
     }
 }

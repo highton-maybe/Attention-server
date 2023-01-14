@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import maybe.attention.domain.recruit.ContestRecruit;
+import maybe.attention.domain.schedule.ContestSchedule;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Builder
@@ -32,4 +35,20 @@ public class Member {
 
     @Column(name = "major")
     private String specialty;
+
+    @OneToMany
+    @JoinColumn(name = "schedule_id")
+    private List<ContestSchedule> schedules;
+
+    @OneToMany
+    @JoinColumn(name = "recruit_id")
+    private List<ContestRecruit> recruits;
+
+    public void addSchedule(ContestSchedule schedule) {
+        schedules.add(schedule);
+    }
+
+    public void addRecruit(ContestRecruit recruit) {
+        recruits.add(recruit);
+    }
 }

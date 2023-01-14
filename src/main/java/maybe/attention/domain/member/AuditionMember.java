@@ -1,6 +1,7 @@
 package maybe.attention.domain.member;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import maybe.attention.domain.recruit.ContestRecruit;
@@ -8,7 +9,7 @@ import maybe.attention.domain.recruit.ContestRecruit;
 import javax.persistence.*;
 
 @Entity
-@Getter
+@Getter @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuditionMember {

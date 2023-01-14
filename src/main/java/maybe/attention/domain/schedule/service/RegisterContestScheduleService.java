@@ -3,6 +3,7 @@ package maybe.attention.domain.schedule.service;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.member.Member;
 import maybe.attention.domain.member.facade.MemberFacade;
+import maybe.attention.domain.member.repo.MemberRepository;
 import maybe.attention.domain.schedule.ContestSchedule;
 import maybe.attention.domain.schedule.presentation.dto.request.RegisterScheduleRequest;
 import maybe.attention.domain.schedule.repo.ContestScheduleRepository;
@@ -15,6 +16,7 @@ public class RegisterContestScheduleService {
 
     private final ContestScheduleRepository contestScheduleRepository;
     private final MemberFacade memberFacade;
+    private final MemberRepository memberRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void execute(RegisterScheduleRequest request) {
@@ -27,6 +29,9 @@ public class RegisterContestScheduleService {
                 .member(currentMember)
                 .build();
 
+        currentMember.addSchedule(contestSchedule);
+
+        memberRepository.save(currentMember);
         contestScheduleRepository.save(contestSchedule);
     }
 }
