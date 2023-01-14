@@ -51,7 +51,7 @@ public class ContestRecruitController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{id}/schedule")
+    @GetMapping("/{id}/audition-member")
     public ResponseEntity<List<AllApplicantResponse>> getApplicant(@PathVariable Long id) {
         List<AllApplicantResponse> responses = getAllApplicantService.execute(id);
         return ResponseEntity.ok(responses);
