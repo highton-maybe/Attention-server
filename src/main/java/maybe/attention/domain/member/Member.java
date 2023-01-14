@@ -27,10 +27,12 @@ public class Member {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "major")
     private String specialty;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+
 
 }
