@@ -6,6 +6,7 @@ import lombok.*;
 @RequiredArgsConstructor
 public class LookUpAllContestRecruitResponse {
     private final String recruitTitle;
+    private final String recruitContent;
     private final String recruitStartDate;
     private final String recruitEndDate;
     private final String organizerName;

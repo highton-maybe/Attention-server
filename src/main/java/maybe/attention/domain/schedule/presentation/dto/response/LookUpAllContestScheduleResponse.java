@@ -8,4 +8,5 @@ public class LookUpAllContestScheduleResponse {
     private final String scheduleTitle;
     private final String scheduleDate;
     private final String organizerName;
+    private final String scheduleContent;
 }
