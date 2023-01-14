@@ -24,7 +24,7 @@ public class UpdateContestScheduleService {
         ContestSchedule contestSchedule = contestScheduleRepository.findById(id)
                 .orElseThrow(() -> new NotFoundContestScheduleException("축제 일정이 존재하지 않습니다."));
 
-        if(contestSchedule.getMember() != currentMember)
+        if(!contestSchedule.getMember().equals(currentMember))
             throw new NotCoincideOrganizerException("주최자와 유저의 정보가 동일하지 않습니다.");
 
         contestSchedule.updateContestSchedule(request.getScheduleTitle(), request.getScheduleContent(), request.getScheduleDate());
