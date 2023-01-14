@@ -23,9 +23,10 @@ public class ContestScheduleController {
     private final LookUpAllScheduleService lookUpAllScheduleService;
     private final UpdateContestScheduleService updateContestScheduleService;
     private final DeleteContestScheduleService deleteContestScheduleService;
+    private final DeleteAllContestScheduleService deleteAllContestScheduleService;
 
     @PostMapping
-    public ResponseEntity<Void> registerContestSchedule(RegisterScheduleRequest request) {
+    public ResponseEntity<Void> registerContestSchedule(@Valid @RequestBody RegisterScheduleRequest request) {
         registerContestScheduleService.execute(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -54,5 +55,11 @@ public class ContestScheduleController {
         return ResponseEntity.ok().build();
     }
 
+    // 테스트용 데이터 싹 날리기
+    @DeleteMapping("/test-all")
+    public ResponseEntity<Void> deleteAll() {
+        deleteAllContestScheduleService.execute();
+        return ResponseEntity.ok().build();
+    }
 
 }

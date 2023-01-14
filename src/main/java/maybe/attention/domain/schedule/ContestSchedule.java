@@ -32,9 +32,9 @@ public class ContestSchedule {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public void updateContestSchedule(String contestScheduleTitle , String scheduleTitle, String scheduleDate) {
+    public void updateContestSchedule(String scheduleTitle , String scheduleContent, String scheduleDate) {
         this.scheduleTitle = scheduleTitle != null ? scheduleTitle : this.scheduleTitle;
-        this.scheduleTitle = scheduleTitle != null ? scheduleTitle : this.scheduleTitle;
+        this.scheduleContent = scheduleContent != null ? scheduleContent : this.scheduleContent;
         this.scheduleDate = scheduleDate != null ? scheduleDate : this.scheduleDate;
     }
 }

@@ -6,6 +6,6 @@ import lombok.*;
 @RequiredArgsConstructor
 public class LookUpAllContestScheduleResponse {
     private final String scheduleTitle;
-    private final String scheduleContent;
+    private final String scheduleDate;
     private final String organizerName;
 }
