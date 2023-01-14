@@ -36,11 +36,11 @@ public class Member {
     @Column(name = "major")
     private String specialty;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "schedule_id")
     private List<ContestSchedule> schedules;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "recruit_id")
     private List<ContestRecruit> recruits;
 

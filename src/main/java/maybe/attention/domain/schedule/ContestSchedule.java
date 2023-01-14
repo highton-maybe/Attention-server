@@ -28,7 +28,7 @@ public class ContestSchedule {
     @Column(name = "schedule_date")
     private String scheduleDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "member_id")
     private Member member;
 

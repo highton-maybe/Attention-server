@@ -3,7 +3,9 @@ package maybe.attention.domain.member.presentation;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.member.presentation.dto.request.MemberLoginRequest;
 import maybe.attention.domain.member.presentation.dto.request.MemberSignUpRequest;
+import maybe.attention.domain.member.presentation.dto.response.GetMemberScheduleResponse;
 import maybe.attention.domain.member.presentation.dto.response.TokenResponse;
+import maybe.attention.domain.member.service.GetMemberScheduleService;
 import maybe.attention.domain.member.service.MemberLoginService;
 import maybe.attention.domain.member.service.MemberSignUpService;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +25,7 @@ public class MemberController {
 
     private final MemberSignUpService memberSignUpService;
     private final MemberLoginService memberLoginService;
+    private final GetMemberScheduleService getMemberScheduleService;
 
     @PostMapping("/signup")
     public ResponseEntity<Void> signUp(@Valid @RequestBody MemberSignUpRequest request) {
@@ -33,5 +37,11 @@ public class MemberController {
     public ResponseEntity<TokenResponse> login(@Valid @RequestBody MemberLoginRequest request) {
         TokenResponse response = memberLoginService.execute(request);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/schedule")
+    public ResponseEntity<List<GetMemberScheduleResponse>> getMemberSchedules() {
+        List<GetMemberScheduleResponse> responses = getMemberScheduleService.execute();
+        return ResponseEntity.ok(responses);
     }
 }

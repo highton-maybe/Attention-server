@@ -33,11 +33,11 @@ public class ContestRecruit {
     @Column(name = "recruit_end_date")
     private String recruitEndDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(fetch = FetchType.LAZY , mappedBy = "auditionMember")
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "auditionMember", cascade = CascadeType.PERSIST)
     private List<AuditionMember> auditionMembers;
 
     public void updateContestRecruit(String recruitTitle, String recruitContent,
