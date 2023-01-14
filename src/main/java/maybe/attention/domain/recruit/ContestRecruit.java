@@ -39,4 +39,12 @@ public class ContestRecruit {
 
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "auditionMember")
     private List<AuditionMember> auditionMembers;
+
+    public void updateContestRecruit(String recruitTitle, String recruitContent,
+                                     String recruitStartDate, String recruitEndDate) {
+        this.recruitTitle = recruitTitle != null ? recruitTitle : this.recruitTitle;
+        this.recruitContent = recruitContent != null ? recruitContent : this.recruitContent;
+        this.recruitStartDate = recruitStartDate != null ? recruitStartDate : this.recruitStartDate;
+        this.recruitEndDate = recruitEndDate != null ? recruitEndDate : this.recruitEndDate;
+    }
 }
