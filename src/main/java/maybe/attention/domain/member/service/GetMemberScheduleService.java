@@ -3,13 +3,10 @@ package maybe.attention.domain.member.service;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.member.Member;
 import maybe.attention.domain.member.facade.MemberFacade;
-import maybe.attention.domain.member.presentation.dto.response.GetMemberRecruitResponse;
 import maybe.attention.domain.member.presentation.dto.response.GetMemberScheduleResponse;
-import maybe.attention.domain.member.repo.MemberRepository;
 import maybe.attention.domain.schedule.ContestSchedule;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
