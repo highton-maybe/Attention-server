@@ -5,10 +5,7 @@ import maybe.attention.domain.schedule.presentation.dto.request.RegisterSchedule
 import maybe.attention.domain.schedule.presentation.dto.request.UpdateScheduleRequest;
 import maybe.attention.domain.schedule.presentation.dto.response.LookUpAllContestScheduleResponse;
 import maybe.attention.domain.schedule.presentation.dto.response.LookUpContestScheduleResponse;
-import maybe.attention.domain.schedule.service.LookUpAllScheduleService;
-import maybe.attention.domain.schedule.service.LookUpContestScheduleService;
-import maybe.attention.domain.schedule.service.RegisterContestScheduleService;
-import maybe.attention.domain.schedule.service.UpdateContestScheduleService;
+import maybe.attention.domain.schedule.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +22,7 @@ public class ContestScheduleController {
     private final LookUpContestScheduleService lookUpContestScheduleService;
     private final LookUpAllScheduleService lookUpAllScheduleService;
     private final UpdateContestScheduleService updateContestScheduleService;
+    private final DeleteContestScheduleService deleteContestScheduleService;
 
     @PostMapping
     public ResponseEntity<Void> registerContestSchedule(RegisterScheduleRequest request) {
@@ -49,4 +47,12 @@ public class ContestScheduleController {
         updateContestScheduleService.execute(id, request);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteContestScheduleById(@PathVariable Long id) {
+        deleteContestScheduleService.execute(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
