@@ -3,7 +3,9 @@ package maybe.attention.domain.recruit.presentation;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.recruit.presentation.dto.request.RegisterContestRecruitRequest;
 import maybe.attention.domain.recruit.presentation.dto.response.LookUpAllContestRecruitResponse;
+import maybe.attention.domain.recruit.presentation.dto.response.LookUpContestRecruitResponse;
 import maybe.attention.domain.recruit.service.LookUpAllContestRecruitService;
+import maybe.attention.domain.recruit.service.LookUpContestRecruitService;
 import maybe.attention.domain.recruit.service.RegisterContestRecruitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ public class ContestRecruitController {
 
     private final RegisterContestRecruitService registerContestRecruitService;
     private final LookUpAllContestRecruitService lookUpAllContestRecruitService;
+    private final LookUpContestRecruitService lookUpContestRecruitService;
 
     @PostMapping
     public ResponseEntity<Void> registerContestRecruit(@Valid @RequestBody RegisterContestRecruitRequest request) {
@@ -29,6 +32,12 @@ public class ContestRecruitController {
     @GetMapping
     public ResponseEntity<List<LookUpAllContestRecruitResponse>> lookUpAllRecruit() {
         List<LookUpAllContestRecruitResponse> response = lookUpAllContestRecruitService.execute();
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<LookUpContestRecruitResponse> lookUpRecruitById(@PathVariable Long id) {
+        LookUpContestRecruitResponse response = lookUpContestRecruitService.execute(id);
         return ResponseEntity.ok().body(response);
     }
 
