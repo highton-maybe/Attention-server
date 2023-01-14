@@ -4,18 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateContestRecruitRequest {
-    @NotEmpty
+    @NotBlank
     private String recruitTitle;
-    @NotEmpty
+    @NotBlank
     private String recruitContent;
-    @NotEmpty
+    @NotBlank
     private String recruitStartDate;
-    @NotEmpty
+    @NotBlank
     private String recruitEndDate;
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Getter
@@ -11,10 +12,10 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class RegisterScheduleRequest {
 
-    @NotEmpty
+    @NotBlank
     private String scheduleTitle;
-    @NotEmpty
+    @NotBlank
     private String scheduleContent;
-    @NotEmpty
+    @NotBlank
     private String scheduleDate;
 }

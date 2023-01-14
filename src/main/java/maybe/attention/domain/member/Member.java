@@ -8,6 +8,7 @@ import maybe.attention.domain.recruit.ContestRecruit;
 import maybe.attention.domain.schedule.ContestSchedule;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,19 +37,19 @@ public class Member {
     @Column(name = "major")
     private String specialty;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "schedule_id")
-    private List<ContestSchedule> schedules;
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "member")
+    private List<ContestSchedule> schedules = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "recruit_id")
-    private List<ContestRecruit> recruits;
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "member")
+    private List<ContestRecruit> recruits = new ArrayList<>();
 
-    public void addSchedule(ContestSchedule schedule) {
-        schedules.add(schedule);
+    public void addSchedule(ContestSchedule contestSchedule) {
+        schedules.add(contestSchedule);
     }
 
-    public void addRecruit(ContestRecruit recruit) {
-        recruits.add(recruit);
+    public void addRecruit(ContestRecruit contestRecruit) {
+        recruits.add(contestRecruit);
     }
 }

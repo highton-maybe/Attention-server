@@ -22,10 +22,11 @@ public class LookUpAllContestRecruitService {
         if(contestRecruits.isEmpty())
             throw new NotFoundContestRecruitException("오디션 모집공고가 존재하지 않습니다.");
 
-        List<LookUpAllContestRecruitResponse> response = contestRecruits.stream()
-                .map(c -> new LookUpAllContestRecruitResponse(c.getContestRecruitId() , c.getRecruitTitle(),c.getRecruitContent() ,c.getRecruitStartDate(), c.getRecruitEndDate(), c.getMember().getName()))
+        List<LookUpAllContestRecruitResponse> responses = contestRecruits.stream()
+                .map(c -> new LookUpAllContestRecruitResponse(c.getContestRecruitId() , c.getRecruitTitle(),c.getRecruitContent()
+                        ,c.getRecruitStartDate(), c.getRecruitEndDate(), c.getMember().getName()))
                 .collect(Collectors.toList());
 
-        return response;
+        return responses;
     }
 }

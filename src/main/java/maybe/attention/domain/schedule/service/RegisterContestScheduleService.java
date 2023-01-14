@@ -16,7 +16,6 @@ public class RegisterContestScheduleService {
 
     private final ContestScheduleRepository contestScheduleRepository;
     private final MemberFacade memberFacade;
-    private final MemberRepository memberRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void execute(RegisterScheduleRequest request) {
@@ -30,8 +29,6 @@ public class RegisterContestScheduleService {
                 .build();
 
         currentMember.addSchedule(contestSchedule);
-
-        memberRepository.save(currentMember);
         contestScheduleRepository.save(contestSchedule);
     }
 }

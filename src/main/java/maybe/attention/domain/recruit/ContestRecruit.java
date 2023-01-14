@@ -8,6 +8,7 @@ import maybe.attention.domain.member.AuditionMember;
 import maybe.attention.domain.member.Member;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -37,8 +38,9 @@ public class ContestRecruit {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder.Default
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "auditionMember", cascade = CascadeType.PERSIST)
-    private List<AuditionMember> auditionMembers;
+    private List<AuditionMember> auditionMembers = new ArrayList<>();
 
     public void updateContestRecruit(String recruitTitle, String recruitContent,
                                      String recruitStartDate, String recruitEndDate) {

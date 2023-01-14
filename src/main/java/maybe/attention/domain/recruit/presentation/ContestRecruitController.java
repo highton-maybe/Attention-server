@@ -26,6 +26,7 @@ public class ContestRecruitController {
     private final DeleteAllRecruitService deleteAllRecruitService;
     private final DeleteContestRecruitService deleteContestRecruitService;
     private final GetAllApplicantService getAllApplicantService;
+    private final SignForAuditionService signForAuditionService;
 
     @PostMapping
     public ResponseEntity<Void> registerContestRecruit(@Valid @RequestBody RegisterContestRecruitRequest request) {
@@ -55,6 +56,12 @@ public class ContestRecruitController {
     public ResponseEntity<List<AllApplicantResponse>> getApplicant(@PathVariable Long id) {
         List<AllApplicantResponse> responses = getAllApplicantService.execute(id);
         return ResponseEntity.ok(responses);
+    }
+
+    @PostMapping("/audition/{id}")
+    public ResponseEntity<Void> signUpForAudition(@PathVariable Long id) {
+        signForAuditionService.execute(id);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping("/{id}")

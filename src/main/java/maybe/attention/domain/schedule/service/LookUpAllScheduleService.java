@@ -23,7 +23,8 @@ public class LookUpAllScheduleService {
             throw new NotFoundContestScheduleException("축제 일정을 찾을 수 없습니다.");
 
         List<LookUpAllContestScheduleResponse> response = contestSchedules.stream()
-                .map(c -> new LookUpAllContestScheduleResponse(c.getContestScheduleId(), c.getScheduleTitle(),c.getScheduleContent(), c.getScheduleDate(), c.getMember().getName()))
+                .map(c -> new LookUpAllContestScheduleResponse(c.getContestScheduleId(), c.getScheduleTitle()
+                        ,c.getScheduleContent(), c.getScheduleDate(), c.getMember().getName()))
                 .collect(Collectors.toList());
 
         return response;

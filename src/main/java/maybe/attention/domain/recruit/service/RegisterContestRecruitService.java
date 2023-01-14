@@ -17,7 +17,6 @@ public class RegisterContestRecruitService {
 
     private final ContestRecruitRepository contestRecruitRepository;
     private final MemberFacade memberFacade;
-    private final MemberRepository memberRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void execute(RegisterContestRecruitRequest request) {
@@ -30,12 +29,9 @@ public class RegisterContestRecruitService {
                 .recruitStartDate(request.getRecruitStartDate())
                 .recruitEndDate(request.getRecruitEndDate())
                 .member(currentMember)
-                .auditionMembers(null)
                 .build();
 
         currentMember.addRecruit(contestRecruit);
-
-        memberRepository.save(currentMember);
         contestRecruitRepository.save(contestRecruit);
     }
 }
