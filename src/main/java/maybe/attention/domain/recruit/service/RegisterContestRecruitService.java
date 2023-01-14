@@ -23,7 +23,7 @@ public class RegisterContestRecruitService {
         Member currentMember = memberFacade.getCurrentMember();
 
         ContestRecruit contestRecruit = ContestRecruit.builder()
-                .recruitContent(request.getRecruitContent())
+                .recruitTitle(request.getRecruitTitle())
                 .recruitContent(request.getRecruitContent())
                 .recruitStartDate(request.getRecruitStartDate())
                 .recruitEndDate(request.getRecruitEndDate())

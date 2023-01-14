@@ -30,6 +30,6 @@ public class Member {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "major")
+    @Column(name = "specialty")
     private String specialty;
 }
