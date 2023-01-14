@@ -24,5 +24,6 @@ public class AuditionMember {
     private Member auditionMember;
 
     @ManyToOne
+    @JoinColumn(name = "contest_recruit_id")
     private ContestRecruit contestRecruit;
 }

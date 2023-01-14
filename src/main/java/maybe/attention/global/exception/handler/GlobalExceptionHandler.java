@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import maybe.attention.domain.member.exception.ExistsEmailException;
 import maybe.attention.domain.member.exception.MemberNotFoundException;
 import maybe.attention.domain.member.exception.PasswordMismatchException;
+import maybe.attention.domain.recruit.exception.NotFoundAuditionMemberException;
 import maybe.attention.domain.recruit.exception.NotFoundContestRecruitException;
 import maybe.attention.domain.schedule.exception.NotCoincideOrganizerException;
 import maybe.attention.domain.schedule.exception.NotFoundContestScheduleException;
@@ -72,6 +73,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundContestRecruitException.class)
     public ResponseEntity<ErrorMessage> handleNotFoundContestRecruitException(HttpServletRequest request , NotFoundContestRecruitException e) {
+        printError(request, e, e.getErrorCode().getMessage());
+        ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
+        return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
+    }
+
+    \@ExceptionHandler(NotFoundAuditionMemberException.class)
+    public ResponseEntity<ErrorMessage> handleNotFoundAuditionMemberException(HttpServletRequest request , NotFoundAuditionMemberException e) {
         printError(request, e, e.getErrorCode().getMessage());
         ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
         return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));

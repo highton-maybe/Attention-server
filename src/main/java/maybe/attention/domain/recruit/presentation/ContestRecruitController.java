@@ -3,6 +3,7 @@ package maybe.attention.domain.recruit.presentation;
 import lombok.RequiredArgsConstructor;
 import maybe.attention.domain.recruit.presentation.dto.request.RegisterContestRecruitRequest;
 import maybe.attention.domain.recruit.presentation.dto.request.UpdateContestRecruitRequest;
+import maybe.attention.domain.recruit.presentation.dto.response.AllApplicantResponse;
 import maybe.attention.domain.recruit.presentation.dto.response.LookUpAllContestRecruitResponse;
 import maybe.attention.domain.recruit.presentation.dto.response.LookUpContestRecruitResponse;
 import maybe.attention.domain.recruit.service.*;
@@ -24,6 +25,7 @@ public class ContestRecruitController {
     private final UpdateContestRecruitService updateContestRecruitService;
     private final DeleteAllRecruitService deleteAllRecruitService;
     private final DeleteContestRecruitService deleteContestRecruitService;
+    private final GetAllApplicantService getAllApplicantService;
 
     @PostMapping
     public ResponseEntity<Void> registerContestRecruit(@Valid @RequestBody RegisterContestRecruitRequest request) {
@@ -47,6 +49,12 @@ public class ContestRecruitController {
     public ResponseEntity<Void> updateRecruit(@PathVariable Long id, @Valid @RequestBody UpdateContestRecruitRequest request) {
         updateContestRecruitService.execute(id, request);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/schedule")
+    public ResponseEntity<List<AllApplicantResponse>> getApplicant(@PathVariable Long id) {
+        List<AllApplicantResponse> responses = getAllApplicantService.execute(id);
+        return ResponseEntity.ok(responses);
     }
 
     @DeleteMapping("/{id}")

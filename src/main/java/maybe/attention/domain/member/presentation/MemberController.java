@@ -53,4 +53,5 @@ public class MemberController {
         List<GetMemberRecruitResponse> responses = getMemberRecruitService.execute();
         return ResponseEntity.ok(responses);
     }
+
 }
