@@ -31,4 +31,10 @@ public class ContestSchedule {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public void updateContestSchedule(String contestScheduleTitle , String scheduleTitle, String scheduleDate) {
+        this.scheduleTitle = scheduleTitle != null ? scheduleTitle : this.scheduleTitle;
+        this.scheduleTitle = scheduleTitle != null ? scheduleTitle : this.scheduleTitle;
+        this.scheduleDate = scheduleDate != null ? scheduleDate : this.scheduleDate;
+    }
 }
