@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import maybe.attention.domain.member.AuditionMember;
+import maybe.attention.domain.member.Member;
 
 import javax.persistence.*;
 import java.util.List;
@@ -32,6 +33,18 @@ public class ContestRecruit {
     @Column(name = "recruit_end_date")
     private String recruitEndDate;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "auditionMember")
     private List<AuditionMember> auditionMembers;
+
+    public void updateContestRecruit(String recruitTitle, String recruitContent,
+                                     String recruitStartDate, String recruitEndDate) {
+        this.recruitTitle = recruitTitle != null ? recruitTitle : this.recruitTitle;
+        this.recruitContent = recruitContent != null ? recruitContent : this.recruitContent;
+        this.recruitStartDate = recruitStartDate != null ? recruitStartDate : this.recruitStartDate;
+        this.recruitEndDate = recruitEndDate != null ? recruitEndDate : this.recruitEndDate;
+    }
 }
