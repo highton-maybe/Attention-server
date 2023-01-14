@@ -25,8 +25,8 @@ public class JwtTokenProvider {
 
     private final MemberDetailsService memberDetailsService;
     private final JwtProperties jwtProperties;
-    private final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 9999; // 토큰 만료일따위..
-    private final long REFRESH_TOKEN_EXPIRE_TIME = ACCESS_TOKEN_EXPIRE_TIME * 12 * 7; // 일주일
+    private final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 19999; // 토큰 만료일따위..
+    private final long REFRESH_TOKEN_EXPIRE_TIME = ACCESS_TOKEN_EXPIRE_TIME * 12 * 7; // 무한
 
     @AllArgsConstructor
     private enum TokenType {

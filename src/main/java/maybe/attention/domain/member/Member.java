@@ -32,7 +32,4 @@ public class Member {
 
     @Column(name = "major")
     private String specialty;
-
-
-
 }
