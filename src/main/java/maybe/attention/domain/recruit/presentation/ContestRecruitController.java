@@ -5,10 +5,7 @@ import maybe.attention.domain.recruit.presentation.dto.request.RegisterContestRe
 import maybe.attention.domain.recruit.presentation.dto.request.UpdateContestRecruitRequest;
 import maybe.attention.domain.recruit.presentation.dto.response.LookUpAllContestRecruitResponse;
 import maybe.attention.domain.recruit.presentation.dto.response.LookUpContestRecruitResponse;
-import maybe.attention.domain.recruit.service.LookUpAllContestRecruitService;
-import maybe.attention.domain.recruit.service.LookUpContestRecruitService;
-import maybe.attention.domain.recruit.service.RegisterContestRecruitService;
-import maybe.attention.domain.recruit.service.UpdateContestRecruitService;
+import maybe.attention.domain.recruit.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +22,8 @@ public class ContestRecruitController {
     private final LookUpAllContestRecruitService lookUpAllContestRecruitService;
     private final LookUpContestRecruitService lookUpContestRecruitService;
     private final UpdateContestRecruitService updateContestRecruitService;
+    private final DeleteAllRecruitService deleteAllRecruitService;
+    private final DeleteContestRecruitService deleteContestRecruitService;
 
     @PostMapping
     public ResponseEntity<Void> registerContestRecruit(@Valid @RequestBody RegisterContestRecruitRequest request) {
@@ -47,6 +46,18 @@ public class ContestRecruitController {
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updateRecruit(@PathVariable Long id, @Valid @RequestBody UpdateContestRecruitRequest request) {
         updateContestRecruitService.execute(id, request);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRecruitById(@PathVariable Long id) {
+        deleteContestRecruitService.execute(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAll() {
+        deleteAllRecruitService.execute();
         return ResponseEntity.ok().build();
     }
 

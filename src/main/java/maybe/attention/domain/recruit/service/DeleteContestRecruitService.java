@@ -28,4 +28,5 @@ public class DeleteContestRecruitService {
 
         contestRecruitRepository.deleteById(id);
     }
+
 }
